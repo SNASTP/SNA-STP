@@ -1,0 +1,23 @@
+# SNA-STP: Semi-tensor product based Algebraic Prover for Neural Networks
+# Requirements for reproducibility
+
+# Core
+numpy>=1.21.0
+torch>=1.10.0
+scipy>=1.7.0
+
+# Machine Learning
+scikit-learn>=1.0.0
+
+# Explainability baselines
+shap>=0.42.0
+
+# Visualization
+matplotlib>=3.4.0
+seaborn>=0.11.0
+
+# Formal verification (E3: SAT/SMT comparison)
+z3-solver>=4.12.0
+
+# Testing
+pytest>=7.0.0
