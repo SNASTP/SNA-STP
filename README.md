@@ -26,7 +26,7 @@ python run_all_experiments.py --quick
 python run_all_experiments.py --list
 ```
 
-**Requirements:** Python 3.8+, numpy, torch, scipy, scikit-learn, shap, matplotlib, seaborn (see `requirements.txt`).
+**Requirements:** Python 3.8+, numpy, torch, torchvision, scipy, scikit-learn, shap, matplotlib, seaborn (see `requirements.txt`).
 
 ---
 
@@ -52,7 +52,8 @@ python run_all_experiments.py --list
 │   ├── e3_sat_comparison.py  # E3: SAT/SMT head-to-head comparison + Z3 verification
 │   ├── e4_repair.py          # E4: Layer-wise logic repair via matrix editing
 │   ├── e5_mnist.py           # E5: MNIST & synthetic experiments
-│   └── e6_cart_baseline.py   # E6: CART decision tree distillation baseline
+│   ├── e6_cart_baseline.py   # E6: CART decision tree distillation baseline
+│   └── e7_cifar_bottleneck.py # E7: CIFAR-10 ResNet bottleneck (Table C1, requires GPU)
 └── data/                     # Datasets (auto-downloaded via sklearn/openml)
 ```
 
@@ -64,10 +65,11 @@ python run_all_experiments.py --list
 |---|---|---|---|---|
 | E1 | Exactness & Attribution Collapse | §4.2 | 100% BNN consistency vs SHAP/LIME collapse | ~5 min |
 | E2 | Baseline Comparison | §4.2, App A | Full fidelity/sparsity/time comparison (6 methods) | ~15 min |
-| E3 | SAT/SMT Head-to-Head | §4.7, App B.8 | SNA-STP-Exact vs Z3: property verification, DNF extraction, fault localization | ~3 min |
-| E4 | Layer-wise Logic Repair | §4.6, App D.6 | Column-level surgical repair vs fine-tuning catastrophic forgetting | ~5 min |
+| E3 | SAT/SMT Head-to-Head | §4.6, App B.8 | SNA-STP-Exact vs Z3: property verification, DNF extraction, fault localization | ~3 min |
+| E4 | Layer-wise Logic Repair | §4.5, App D.6 | Column-level surgical repair vs fine-tuning catastrophic forgetting | ~5 min |
 | E5 | MNIST & Synthetic | §4.3, App A.3 | Multi-class MNIST, scalability, known-logic validation | ~10 min |
 | E6 | CART Baseline | §4.2 | CART distillation fidelity (86.5% at interpretable depth) vs SNA-STP 100% | ~3 min |
+| E7 | CIFAR-10 Bottleneck | Table C1 | ResNet-18 bottleneck accuracy vs. extraction time (k=12,16; 3 seeds; GPU required) | ~4--5 h |
 
 ---
 

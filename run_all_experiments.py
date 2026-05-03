@@ -60,6 +60,7 @@ def main():
     parser.add_argument('--e4', action='store_true', help='Only E4 (Repair)')
     parser.add_argument('--e5', action='store_true', help='Only E5 (MNIST)')
     parser.add_argument('--e6', action='store_true', help='Only E6 (CART Baseline)')
+    parser.add_argument('--e7', action='store_true', help='Only E7 (CIFAR-10 Bottleneck, GPU required)')
     parser.add_argument('--list', action='store_true', help='List experiments')
     args = parser.parse_args()
 
@@ -76,6 +77,8 @@ def main():
          "experiments/e5_mnist.py", "run_mnist_experiments"),
         ("E6: CART Decision Tree Baseline",
          "experiments/e6_cart_baseline.py", None),
+        ("E7: CIFAR-10 ResNet Bottleneck (GPU required, ~4-5h)",
+         "experiments/e7_cifar_bottleneck.py", None),
     ]
 
     if args.list:
@@ -98,8 +101,13 @@ def main():
         run_experiment(*experiments[4])
     elif args.e6:
         run_experiment(*experiments[5])
+    elif args.e7:
+        run_experiment(*experiments[6])
     else:
         for name, path, func in experiments:
+            if 'GPU required' in name:
+                print(f"\n  Skipping {name} (requires GPU, use --e7 to run)")
+                continue
             run_experiment(name, path, func)
 
     print(f"\n{'=' * 70}")
