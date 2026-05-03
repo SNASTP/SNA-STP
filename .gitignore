@@ -27,5 +27,6 @@ Thumbs.db
 
 # Experiment outputs
 *.log
+*.pth
 results/
 output/
